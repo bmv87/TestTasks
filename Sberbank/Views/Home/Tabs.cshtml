@@ -1,0 +1,22 @@
+﻿@model Sberbank.Models.Options
+@using Sberbank.Models
+
+<h4 class="h4 text-center">Тестовое задание</h4>
+<div id="main" class="container-fluid">
+    <div id="tabs">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li  class="nav-item"><a aria-selected="true" data-toggle="tab" id="tabs-1" aria-controls="panel-1" role="tab" class="nav-link active" href="#panel-1">Параметры отчета</a></li>
+            <li  class="nav-item"><a aria-selected="false" data-toggle="tab" id="tabs-2" aria-controls="panel-2" role="tab" class="nav-link" href="#panel-2">Отчет #1</a></li>
+            <li  class="nav-item"><a aria-selected="false" data-toggle="tab" id="tabs-3" aria-controls="panel-3" role="tab" class="nav-link" href="#panel-3">Отчет #2</a></li>
+            <li  class="nav-item"><a aria-selected="false" data-toggle="tab" id="tabs-4" aria-controls="panel-4" role="tab" class="nav-link" href="#panel-4">Контроль</a></li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div role="tabpanel" aria-labelledby="tabs-1" class="tab-pane fade show active" id="panel-1">@Html.Partial("TabPage1", Model)</div>
+            <div role="tabpanel" aria-labelledby="tabs-2" class="tab-pane fade pt-5" id="panel-2">@Html.Partial("TabPage2")</div>
+            <div role="tabpanel" aria-labelledby="tabs-3" class="tab-pane fade pt-5" id="panel-3">@Html.Partial("TabPage2")</div>
+            <div role="tabpanel" aria-labelledby="tabs-4" class="tab-pane fade pt-5" id="panel-4">@Html.Partial("TabPage3")</div>
+        </div>
+        
+    </div>
+</div>
+

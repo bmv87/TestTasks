@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/jquery/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery/jquery-ui.theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/styles/site.css" rel="stylesheet" />
+    @RenderSection("Scripts")
+</head>
+<body>
+    <div>
+        @RenderSection("Body")
+    </div>
+    
+    <script src="~/Content/Scripts/site.js"></script>
+</body>
+</html>

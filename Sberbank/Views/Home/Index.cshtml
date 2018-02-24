@@ -1,0 +1,15 @@
+﻿@model Options
+
+@using Sberbank.Models
+
+@{
+    ViewBag.Title = "Отчеты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+    @Html.Partial("Scripts")
+}
+@section Body {
+    @Html.Partial("Tabs", Model)
+}

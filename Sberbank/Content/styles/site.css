@@ -1,0 +1,16 @@
+﻿.tab-content {
+    border: 1px solid #dee2e6;
+    border-top: none;
+}
+
+form {
+    padding: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.is-invalid {
+    width: 50px !important;
+}

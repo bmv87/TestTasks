@@ -1,0 +1,30 @@
+﻿@model IList<Sberbank.Models.Report>
+@using System.Reflection
+@using Sberbank.Models
+@{
+    var props = Model[0].GetType().GetProperties();
+    var count = 1;
+}
+
+<table class="table table-bordered table-striped text-center">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            @foreach (PropertyInfo prop in props) {
+                @if (prop.Name != "Key") {
+                    <th scope="col">@Html.DisplayName(prop.Name)</th>
+                }
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Report rep in Model) {
+            <tr>
+                <th scope="row">@count</th>
+                <td>
+                    @Html.DisplayFor(r => rep.Field1);
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
