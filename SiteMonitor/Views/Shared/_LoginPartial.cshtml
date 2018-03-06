@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions {
+        UpdateTargetId = "main-section"
+    };
+}
+@if (Request.IsAuthenticated) {
+    using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })) {
+        @Html.AntiForgeryToken()
+
+        @Html.ActionLink("Здравствуйте, " + User.Identity.GetUserName() + "!", "Index", "Admin", null, htmlAttributes: new { title = "Admin", @class = "nav-item nav-link" })
+        <a class="nav-item nav-link" href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Выйти</a>
+
+    }
+}
+else {
+    <ul class="nav navbar-nav col-subnav">
+        <li class="nav-item">@Html.ActionLink("Зарегистрироваться", "Register", "Account", null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+        <li class="nav-item">@Html.ActionLink("Выполнить вход", "Login", "Account", null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    </ul>
+}

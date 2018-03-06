@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Index User";
+}
+
+@section Content {
+    @Html.Partial("Content")
+}
+
+
+@section Body{
+    <div class="main-container">
+        <div id="managment-table-container" class="table-container">
+            @Html.Action("GetSitesList", "Home")
+        </div>
+
+    </div>
+}
+
+@section Script {
+    @Html.Partial("Script")
+    <script src="~/signalr/hubs"></script>
+    @Scripts.Render("~/bundles/app")
+}

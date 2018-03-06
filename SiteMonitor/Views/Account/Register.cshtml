@@ -1,0 +1,54 @@
+﻿@model SiteMonitor.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Зарегистрироваться";
+}
+
+@section Content {
+    @Html.Partial("Content")
+}
+@section Body {
+    <h4>@ViewBag.Title.</h4>
+    <div class="col-md-7">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
+            @Html.AntiForgeryToken()
+            <h5>Создание новой учетной записи.</h5>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Hometown, new { @class = "control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Hometown, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Зарегистрироваться" />
+                </div>
+            </div>
+        }
+    </div>
+}
+
+
+
+@section Script {
+    @Html.Partial("Script")
+}

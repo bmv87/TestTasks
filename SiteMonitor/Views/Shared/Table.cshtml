@@ -1,0 +1,53 @@
+﻿@model  List<SiteMonitor.Models.SiteInfo>
+@using SiteMonitor.Models
+@using SiteMonitor.ViewHelpers
+
+@{
+
+    if (Model.Count == 0) {
+        <h3>Добавьте список сайтов для мониторинга в кабинете администратора</h3>
+        return;
+    }
+
+    SiteInfo site = Model[0];
+    bool isAdminPanel = ViewBag.IsAdminPanel;
+    AjaxOptions ajaxOptions = new AjaxOptions {
+        UpdateTargetId = "managment-table-container"
+    };
+
+}
+<table class="table table-bordered table-striped text-center">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(m => site.Name)</th>
+            <th scope="col">@Html.DisplayNameFor(m => site.Url)</th>
+            <th scope="col">@Html.DisplayNameFor(m => site.Address)</th>
+
+            @if (!isAdminPanel) {
+                <th scope="col">@Html.DisplayNameFor(m => site.Status)</th>
+                <th scope="col">@Html.DisplayNameFor(m => site.RoundtripTime)</th>
+            }
+            else {
+                <th scope="col">Действие</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (SiteInfo si in Model) {
+            <tr data-id="@si.Id">
+                <td>@Html.DisplayFor(m => si.Name)</td>
+                <td>@Html.DisplayFor(m => si.Url)</td>
+                <td>@Html.DisplayFor(m => si.Address)</td>
+
+                @if (!isAdminPanel) {
+                    <td>@Html.DisplayFor(m => si.Status)</td>
+                    <td>@Html.DisplayFor(m => si.RoundtripTime)</td>
+                }
+                else {
+                    <td>@Ajax.ImageActionLink("", "Удалить", "Delete","", ajaxOptions, "link-icon","fa fa-trash-alt", new { id = si.Id })</td>
+                }
+            </tr>
+        }
+    </tbody>
+    <tfoot></tfoot>
+</table>

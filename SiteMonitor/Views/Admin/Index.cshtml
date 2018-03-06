@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index Admin";
+
+}
+@section Content {
+    @Html.Partial("Content")
+}
+@section Body{
+    <div class="main-container row">
+        <div id="managment-table-container" class="table-container col-sm-7">
+            @Html.Action("GetSitesList", "Admin")
+        </div>
+        <div class="form-container col-sm-5">
+            @Html.Action("Create", "Admin")
+        </div>
+    </div>
+}
+
+
+
+
+@section Script {
+    @Html.Partial("Script")
+}

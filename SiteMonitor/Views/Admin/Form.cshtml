@@ -1,0 +1,28 @@
+﻿@model SiteMonitor.Models.SiteInfo
+
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions {
+        UpdateTargetId = "managment-table-container"
+    };
+}
+<h4 class="h4">Добавление нового сайта.</h4>
+@using (@Ajax.BeginForm("Create", "Admin", ajaxOptions, new { @class = "create-form form-inline" })) {
+    @Html.HiddenFor(m => Model.Id)
+    @Html.HiddenFor(m => Model.Address)
+    @Html.HiddenFor(m => Model.Status)
+    @Html.HiddenFor(m => Model.RoundtripTime)
+    <div class="form-group col-sm-12 row">
+        @Html.LabelFor(m => Model.Name, new { @class = "col-sm-4 col-form-label" })
+        @Html.TextBoxFor(m => Model.Name, new { @class = "form-control col-sm-8" })
+    </div>
+    <div class="form-group col-sm-12 row">
+        @Html.LabelFor(m => Model.Url, new { @class = "col-sm-4 col-form-label" })
+        @Html.TextBoxFor(m => Model.Url, new { @class = "form-control col-sm-8" })
+        <small class="form-text text-muted col-sm-4"></small><small class="form-text text-muted col-sm-9">Пример: test.com, v4-alpha.getbootstrap.com</small>
+    </div>
+
+    <div class="form-group col-sm-12 row mt-2">
+        <input type="submit" class="create-submit btn btn btn-default col-sm-12" value="Добавить" />
+    </div>
+
+}

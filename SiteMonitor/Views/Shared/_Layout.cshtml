@@ -1,0 +1,34 @@
+﻿@{
+    AjaxOptions ajaxOptions = new AjaxOptions {
+        UpdateTargetId = "main-section"
+    };
+}
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    @RenderSection("Content")
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header class="bg-dark row">
+        <div class="col-sm-3"> <img class="img-fluid logo" src="~/Content/monitoring-256.png" /> @Html.ActionLink("Монитор", "Index", "Home", new { area = "" }, new { @class = "app-header" })</div>
+        <nav class="navbar p-a-0 ">
+            <ul class="nav navbar-nav col-subnav">
+                <li class="nav-item">@Html.ActionLink("Панель мониторинга", "Index", "Home", null, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Панель администратора", "Index", "Admin", null, new { @class = "nav-link" })</li>
+            </ul>
+            <div class="ml-5">@Html.Partial("_LoginPartial")</div>
+        </nav>
+        
+    </header>
+
+    <main id="main-section" class="p-2 m-2">
+        @RenderSection("Body")
+    </main>
+    <footer class="footer text-center text-muted">© Copyright 2018 - SPb. All rights reserved.</footer>
+    @RenderSection("Script")
+</body>
+</html>
